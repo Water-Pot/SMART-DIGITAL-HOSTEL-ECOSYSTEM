@@ -23,7 +23,7 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody User user){
         System.out.println(user.getUserName());
         return ResponseEntity.status(HttpStatus.OK).body(userService.saveUser(user));

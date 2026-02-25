@@ -33,7 +33,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
         httpSecurity.csrf(customizer->customizer.disable())
         .authorizeHttpRequests(customizer->customizer
-            .requestMatchers("/user/register","/user/login")
+            .requestMatchers("/user/signup","/user/login")
             .permitAll()
             .anyRequest()
             .authenticated())
