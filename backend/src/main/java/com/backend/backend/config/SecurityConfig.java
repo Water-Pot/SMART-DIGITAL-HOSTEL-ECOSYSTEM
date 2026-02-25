@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.backend.backend.user.JwtFilter;
+
 
 
 @Configuration
@@ -25,6 +27,8 @@ public class SecurityConfig {
     @Autowired
     private UserDetailsService myUserDetailsService;
 
+    @Autowired
+    private JwtFilter jwtFilter;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
         httpSecurity.csrf(customizer->customizer.disable())
@@ -33,7 +37,8 @@ public class SecurityConfig {
             .permitAll()
             .anyRequest()
             .authenticated())
-        .sessionManagement(customizer->customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        .sessionManagement(customizer->customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
 
