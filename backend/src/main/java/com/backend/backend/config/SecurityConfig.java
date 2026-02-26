@@ -38,7 +38,9 @@ public class SecurityConfig {
             .anyRequest()
             .authenticated())
         .sessionManagement(customizer->customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class);
+        .addFilterBefore(jwtFilter,UsernamePasswordAuthenticationFilter.class)
+        // .oauth2Login(Customizer.withDefaults())
+        ;
         return httpSecurity.build();
     }
 
