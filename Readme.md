@@ -15,3 +15,8 @@ flowchart TD
     C --> B
     B -->|"JSON Response"| A
 ```
+
+SS
+
+1. Signup
+<img src="./Images/Backend/B1 User Sign Up Postman.png" alt="User Sign Up Postman">
