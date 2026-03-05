@@ -1,5 +1,7 @@
 package com.backend.backend.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,14 @@ public class UserService {
         User new_user=User
         .builder()
         .userName(user.getUserName())
+        .profileImage(user.getProfileImage())
         .password(user.getPassword())
         .build();
         return userRepo.save(new_user);
+    }
+
+
+    public List<User> getAllUser(){
+        return userRepo.findAll();
     }
 }

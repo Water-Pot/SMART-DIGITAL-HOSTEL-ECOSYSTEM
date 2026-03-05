@@ -1,12 +1,9 @@
 package com.backend.backend.user;
-
-
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +24,6 @@ public class User {
     // @Column(unique = true)
     private String userName;
     private String password;
+    @Lob
+    private byte[] profileImage;
 }
