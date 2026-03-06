@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.backend.backend.dto.UserRequest;
 import com.backend.backend.jwt.JwtService;
 
 import tools.jackson.databind.ObjectMapper;
@@ -37,14 +38,15 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> register(
-            @RequestBody User user
+            @RequestBody UserRequest userRequest
             // ,@RequestParam("image") MultipartFile image
         ) {
         try {
             // ObjectMapper objectMapper = new ObjectMapper();
-            // User user = objectMapper.readValue(body, User.class);
-            // user.setProfileImage(image.getBytes());
-            userService.saveUser(user);
+            // User user1 = objectMapper.readValue(user0, User.class);
+
+            System.out.println(userRequest);
+            userService.saveUser(userRequest);
             return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUser());
         } catch (Exception e) {
             System.out.println(e.getMessage());

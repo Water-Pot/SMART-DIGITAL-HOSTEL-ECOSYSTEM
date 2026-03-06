@@ -1,6 +1,7 @@
 package com.backend.backend.service;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,9 @@ public class RoleService {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ArrayList<>());
     }
 
+    public Role findByRole(String role){
+        return roleRepo.findByRole(role);
+    }
     public ResponseEntity<?> save(String body) {
         try {
             ObjectMapper objectMapper=new ObjectMapper();
