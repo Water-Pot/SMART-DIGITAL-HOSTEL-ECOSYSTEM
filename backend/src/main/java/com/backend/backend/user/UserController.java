@@ -10,9 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,14 +35,15 @@ public class UserController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    @PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping("/signup")
     public ResponseEntity<?> register(
-            @RequestPart("body") String body,
-            @RequestPart("image") MultipartFile image) {
+            @RequestBody User user
+            // ,@RequestParam("image") MultipartFile image
+        ) {
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            User user = objectMapper.readValue(body, User.class);
-            user.setProfileImage(image.getBytes());
+            // ObjectMapper objectMapper = new ObjectMapper();
+            // User user = objectMapper.readValue(body, User.class);
+            // user.setProfileImage(image.getBytes());
             userService.saveUser(user);
             return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUser());
         } catch (Exception e) {
@@ -51,6 +54,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
+        System.out.println(user.getUserName()+" "+user.getPassword());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword()));
         String result = "";
@@ -62,4 +66,11 @@ public class UserController {
         System.out.println(user.getUserName());
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
+
+
+    @PostMapping(value = "/upload-image/{id}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> update_user(@PathVariable("id") Integer id,@RequestParam("image") MultipartFile image) {
+        return userService.updateUser(id,image);
+    }
+    
 }

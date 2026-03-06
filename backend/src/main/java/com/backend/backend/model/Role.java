@@ -1,30 +1,25 @@
-package com.backend.backend.user;
-import jakarta.persistence.Column;
+package com.backend.backend.model;
+
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Data
 @Entity
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "USERS")
-@Builder
-public class User {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(unique = true)
-    private String userName;
-    private String password;
-    @Lob
-    private byte[] profileImage;
+    private String role;
+    private LocalDateTime added_time;
 }
