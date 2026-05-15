@@ -1,0 +1,35 @@
+<!-- Dashboard Card -->
+<div class="card bg-orange-500 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">🍽️ Dining Menu</h2>
+        <p class="text-sm">Check what's cooking.</p>
+        <div class="card-actions justify-end mt-2">
+            <button class="btn btn-outline text-white btn-sm w-full" onclick="openViewMenusModal()">View Menu</button>
+        </div>
+    </div>
+</div>
+
+<!-- View Modal -->
+<dialog id="meal_list_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-2xl mb-4 border-b pb-2">🍽️ Weekly Menu</h3>
+        <div class="overflow-x-auto h-96">
+            <table class="table table-zebra table-pin-rows">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>Menu Name</th>
+                        <th>Day</th>
+                        <th>Meal Type</th>
+                        <th>Menu Items</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableBody">
+                    <tr><td colspan="4" class="text-center">Loading Data...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>

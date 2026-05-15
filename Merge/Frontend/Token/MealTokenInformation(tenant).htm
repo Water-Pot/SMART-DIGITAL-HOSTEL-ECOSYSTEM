@@ -1,0 +1,74 @@
+<div class="card bg-rose-500 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">🎟️ Meal Tokens</h2>
+        <p class="text-sm">Buy tokens for meals.</p>
+        <div class="card-actions justify-between mt-2 flex-nowrap">
+            <button class="btn btn-outline border-white text-white btn-sm flex-1 mr-1"
+                onclick="openTokenHistoryModal()">History</button>
+            <button class="btn btn-warning text-black btn-sm flex-1 ml-1"
+                onclick="buy_token_modal.showModal()">Buy +</button>
+        </div>
+    </div>
+</div>
+<dialog id="buy_token_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-md">
+        <h3 class="font-bold text-lg mb-4 text-rose-600">🎟️ Buy Meal Tokens</h3>
+        <form id="formBuyToken" class="space-y-4">
+            <div class="form-control">
+                <label class="label"><span class="label-text">Your Allocated Room</span></label>
+                <input type="number" id="t_roomNo"
+                    class="input input-bordered bg-base-200 text-primary font-bold"
+                    readonly placeholder="Finding your room..." required />
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">How many tokens?</span></label>
+                <input type="number" id="t_tokenAmount" class="input input-bordered"
+                    placeholder="Enter amount" min="1" required
+                    oninput="document.getElementById('t_amount').value = this.value" />
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Payment Method</span></label>
+                <select id="t_paymentMethod" class="select select-bordered" required>
+                    <option value="visa">Visa / MasterCard</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="bkash">bKash</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Total Price (৳)</span></label>
+                <input type="number" id="t_amount"
+                    class="input input-bordered bg-base-200 text-xl font-bold text-green-700"
+                    readonly required placeholder="0.00" />
+            </div>
+            <div class="modal-action mt-6">
+                <button type="button" class="btn" onclick="buy_token_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-secondary text-white w-32">Pay Now ➔</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+<dialog id="token_history_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-4xl">
+        <h3 class="font-bold text-xl mb-4 border-b pb-2">📜 Meal Token History</h3>
+        <div class="overflow-x-auto h-80">
+            <table class="table table-zebra table-pin-rows w-full">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Room</th>
+                        <th>Tokens Bought</th>
+                        <th>Amount Paid</th>
+                        <th>Method</th>
+                    </tr>
+                </thead>
+                <tbody id="tokenHistoryTableBody">
+                    <tr><td colspan="6" class="text-center">Loading history...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>

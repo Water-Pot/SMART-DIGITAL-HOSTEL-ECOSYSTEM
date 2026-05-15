@@ -1,0 +1,72 @@
+<div class="card bg-orange-500 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">🍲 Food Items</h2>
+        <p class="text-sm">Menu item catalogue</p>
+        <div class="card-actions justify-between mt-2 flex-nowrap">
+            <button class="btn btn-outline border-white text-white btn-sm flex-1 mr-1"
+                onclick="openViewMenuItemsModal()">View</button>
+            <button class="btn btn-warning text-black btn-sm flex-1 ml-1"
+                onclick="add_menuItem_modal.showModal()">Add +</button>
+        </div>
+    </div>
+</div>
+<dialog id="menuItem_list_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-4xl">
+        <h3 class="font-bold text-xl mb-4 text-primary">🍲 Food Items</h3>
+        <div class="overflow-x-auto h-[28rem] border border-base-300 rounded-xl">
+            <table class="table table-zebra table-pin-rows w-full">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>ID</th>
+                        <th>Item Name</th>
+                        <th>Desc</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="menuItemTableBody"></tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>
+<dialog id="add_menuItem_modal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg mb-4 text-primary">🍲 Add Food Item</h3>
+        <form id="formAddMenuItem" class="space-y-3">
+            <div class="form-control">
+                <label class="label"><span class="label-text">Item Name</span></label>
+                <input type="text" id="itemName" class="input input-bordered w-full" required />
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Description</span></label>
+                <input type="text" id="itemDesc" class="input input-bordered w-full" />
+            </div>
+            <div class="modal-action">
+                <button type="button" class="btn" onclick="add_menuItem_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+<dialog id="edit_menuItem_modal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg mb-4 text-primary">✏️ Edit Food Item</h3>
+        <form id="formEditMenuItem" class="space-y-3">
+            <input type="hidden" id="e_menuItemId" />
+            <div class="form-control">
+                <label class="label"><span class="label-text">Item Name</span></label>
+                <input type="text" id="e_itemName" class="input input-bordered w-full" required />
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Description</span></label>
+                <input type="text" id="e_itemDesc" class="input input-bordered w-full" />
+            </div>
+            <div class="modal-action">
+                <button type="button" class="btn" onclick="edit_menuItem_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</dialog>

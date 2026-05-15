@@ -1,0 +1,108 @@
+<div class="card bg-emerald-600 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">🍽️ Menus</h2>
+        <p class="text-sm">Weekly meal planning</p>
+        <div class="dropdown dropdown-top w-full mt-2">
+            <label tabindex="0" class="btn btn-outline border-white text-white btn-sm w-full">Manage ⚙️</label>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-xl bg-base-100 rounded-box w-full text-base-content font-bold">
+                <li><a onclick="openViewMenusModal()">View Menus</a></li>
+                <li><a onclick="create_menu_modal.showModal()" class="text-primary">Create Menu</a></li>
+                <li class="my-1 border-b border-base-300"></li>
+                <li><a onclick="add_mealType_modal.showModal()" class="text-primary">Add Meal Type</a></li>
+                <li><a onclick="openViewMealTypesModal()">Edit Meal Types</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<dialog id="meal_list_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-xl mb-4 text-primary">🍽️ Weekly Menu</h3>
+        <div class="overflow-x-auto h-[28rem] border border-base-300 rounded-xl">
+            <table class="table table-zebra table-pin-rows w-full">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>Menu Name</th>
+                        <th>Day</th>
+                        <th>Meal Type</th>
+                        <th>Menu Items</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="menuTableBody"></tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>
+<dialog id="create_menu_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-2xl">
+        <h3 class="font-bold text-lg mb-4 text-primary">🍽️ Create Menu</h3>
+        <form id="formCreateMenu" class="grid grid-cols-2 gap-4">
+            <div class="form-control">
+                <label class="label"><span class="label-text">Day</span></label>
+                <select id="m_day" class="select select-bordered w-full" required>
+                    <option value="" disabled selected>Select Day</option>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Meal Type</span></label>
+                <select id="m_mealType" class="select select-bordered w-full" required>
+                    <option value="" disabled selected>Loading...</option>
+                </select>
+            </div>
+            <div class="form-control col-span-2">
+                <label class="label"><span class="label-text">Select Items</span></label>
+                <div class="border border-base-300 p-4 rounded-lg max-h-48 overflow-y-auto flex flex-wrap gap-2"
+                    id="m_menuItemsContainer"></div>
+            </div>
+            <div class="modal-action col-span-2">
+                <button type="button" class="btn" onclick="create_menu_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Menu</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+<dialog id="update_menu_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-2xl">
+        <h3 class="font-bold text-lg mb-4 text-primary">✏️ Update Menu</h3>
+        <form id="formUpdateMenu" class="grid grid-cols-2 gap-4">
+            <input type="hidden" id="u_menuId" />
+            <div class="form-control">
+                <label class="label"><span class="label-text">Day</span></label>
+                <select id="u_day" class="select select-bordered w-full" required>
+                    <option value="saturday">Saturday</option>
+                    <option value="sunday">Sunday</option>
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                </select>
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Meal Type</span></label>
+                <select id="u_mealType" class="select select-bordered w-full" required>
+                    <option value="" disabled selected>Loading...</option>
+                </select>
+            </div>
+            <div class="form-control col-span-2">
+                <label class="label"><span class="label-text">Update Menu Items</span></label>
+                <div class="border border-base-300 p-4 rounded-lg max-h-48 overflow-y-auto flex flex-wrap gap-2"
+                    id="u_menuItemsContainer"></div>
+            </div>
+            <div class="modal-action col-span-2">
+                <button type="button" class="btn" onclick="update_menu_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</dialog>
