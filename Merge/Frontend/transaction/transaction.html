@@ -1,0 +1,75 @@
+<h2 class="text-2xl font-bold mb-4 px-2">💰 Revenue</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <span class="text-sm font-bold text-gray-500 uppercase tracking-wider"
+        >Room Rent</span
+      >
+      <div class="text-3xl font-extrabold text-primary mt-2" id="statRoomRev">
+        ৳ 0.00
+      </div>
+      <div id="statRoomTx" class="text-sm font-semibold text-gray-400 mt-1">
+        0 Transactions
+      </div>
+    </div>
+  </div>
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <span class="text-sm font-bold text-gray-500 uppercase tracking-wider"
+        >Meal Tokens</span
+      >
+      <div
+        class="text-3xl font-extrabold text-secondary mt-2"
+        id="statTokenRev"
+      >
+        ৳ 0.00
+      </div>
+      <div id="statTokenTx" class="text-sm font-semibold text-gray-400 mt-1">
+        0 Transactions
+      </div>
+    </div>
+  </div>
+  <div class="card bg-neutral text-neutral-content shadow-xl">
+    <div class="card-body">
+      <span
+        class="text-sm font-bold uppercase tracking-wider text-neutral-content/80"
+        >Total Revenue</span
+      >
+      <div class="text-4xl font-extrabold mt-2 text-white" id="statTotalRev">
+        ৳ 0.00
+      </div>
+      <div
+        id="statTotalTx"
+        class="text-sm font-semibold mt-1 text-neutral-content/60"
+      >
+        0 Total Transactions
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Token Sales History Modal -->
+
+<dialog id="all_tokens_list_modal" class="modal">
+  <div class="modal-box w-11/12 max-w-5xl">
+    <h3 class="font-bold text-xl mb-4 text-primary">🎟️ Token Sales</h3>
+    <div class="overflow-x-auto h-[28rem] border border-base-300 rounded-xl">
+      <table class="table table-zebra table-pin-rows w-full">
+        <thead>
+          <tr class="bg-base-200">
+            <th>ID</th>
+            <th>User</th>
+            <th>Room</th>
+            <th>Count</th>
+            <th>Paid</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="allTokenTableBody"></tbody>
+      </table>
+    </div>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn">Close</button></form>
+    </div>
+  </div>
+</dialog>
