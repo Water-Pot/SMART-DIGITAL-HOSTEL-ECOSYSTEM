@@ -1,0 +1,71 @@
+Dashboard Card:
+
+<div class="card bg-cyan-600 text-white shadow-lg">
+  <div class="card-body p-6">
+    <h2 class="card-title text-xl">💬 Discussions</h2>
+    <p class="text-sm">Community Forum.</p>
+    <div class="card-actions justify-between mt-2 flex-nowrap">
+      <button
+        class="btn btn-outline border-white text-white btn-sm flex-1 mr-1"
+        onclick="openDiscussionsModal()"
+      >
+        Forum
+      </button>
+      <button
+        class="btn btn-warning text-black btn-sm flex-1 ml-1"
+        onclick="add_discussion_modal.showModal()"
+      >
+        Post +
+      </button>
+    </div>
+  </div>
+</div>
+
+View Modal:
+
+<dialog id="discussion_list_modal" class="modal">
+  <div class="modal-box w-11/12 max-w-4xl bg-base-200">
+    <h3 class="font-bold text-2xl mb-4 border-b pb-2 text-cyan-600">
+      💬 Community Discussions
+    </h3>
+    <div
+      id="discussionsContainer"
+      class="space-y-4 max-h-[60vh] overflow-y-auto pr-2"
+    >
+      <div class="text-center">Loading discussions...</div>
+    </div>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn">Close</button></form>
+    </div>
+  </div>
+</dialog>
+
+Post Modal:
+<dialog id="add_discussion_modal" class="modal">
+  <div class="modal-box w-11/12 max-w-md">
+    <h3 class="font-bold text-lg mb-4 text-cyan-600">📝 Start a Discussion</h3>
+    <form id="formAddDiscussion" class="space-y-4">
+      <div class="form-control">
+        <label class="label"
+          ><span class="label-text">Topic / Description</span></label
+        >
+        <textarea
+          id="d_description"
+          class="textarea textarea-bordered h-24"
+          placeholder="What's on your mind?"
+          required
+        ></textarea>
+      </div>
+      <div class="modal-action mt-6">
+        <button
+          type="button"
+          class="btn"
+          onclick="add_discussion_modal.close()"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-accent text-white">Post ➔</button>
+      </div>
+    </form>
+  </div>
+</dialog>
