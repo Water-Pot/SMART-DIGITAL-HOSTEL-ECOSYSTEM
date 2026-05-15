@@ -1,0 +1,65 @@
+<!-- Dashboard Card -->
+<div class="card bg-teal-600 text-white shadow-lg">
+  <div class="card-body p-6">
+    <h2 class="card-title text-xl">💬 Discussions</h2>
+    <p class="text-sm">Community discussions</p>
+    <div class="card-actions justify-between mt-2 flex-nowrap">
+      <button
+        class="btn btn-outline border-white text-white btn-sm flex-1 mr-1"
+        onclick="openDiscussionsModal()"
+      >
+        View
+      </button>
+      <button
+        class="btn btn-warning text-black btn-sm flex-1 ml-1"
+        onclick="add_discussion_modal.showModal()"
+      >
+        Post +
+      </button>
+    </div>
+  </div>
+</div>
+<!-- View Modal -->
+
+<dialog id="discussion_list_modal" class="modal">
+  <div class="modal-box w-11/12 max-w-4xl bg-base-200">
+    <h3 class="font-bold text-xl mb-4 text-primary border-b pb-2">💬 Forum</h3>
+    <div
+      id="discussionsContainer"
+      class="space-y-4 max-h-[60vh] overflow-y-auto pr-2"
+    ></div>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn">Close</button></form>
+    </div>
+  </div>
+</dialog>
+
+<!-- Post Modal -->
+
+<dialog id="add_discussion_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg mb-4 text-primary">💬 Post Forum</h3>
+    <form id="formAddDiscussion" class="space-y-3">
+      <div class="form-control">
+        <label class="label"
+          ><span class="label-text">Topic details</span></label
+        >
+        <textarea
+          id="d_description"
+          class="textarea textarea-bordered h-24 w-full"
+          required
+        ></textarea>
+      </div>
+      <div class="modal-action">
+        <button
+          type="button"
+          class="btn"
+          onclick="add_discussion_modal.close()"
+        >
+          Cancel
+        </button>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+  </div>
+</dialog>
