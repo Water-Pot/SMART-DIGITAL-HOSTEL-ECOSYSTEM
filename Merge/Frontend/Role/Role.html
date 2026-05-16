@@ -1,0 +1,17 @@
+<!-- Admin — HTML -->
+<!-- Change Role Modal: -->
+ <dialog id="change_role_modal" class="modal">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg mb-4 text-primary">🔑 Change Role</h3>
+        <select id="cr_roleSelect" class="select select-bordered w-full">
+            <option value="tenant">Tenant</option>
+            <option value="admin">Admin</option>
+        </select>
+        <div class="modal-action">
+            <button class="btn" onclick="change_role_modal.close()">Cancel</button>
+            <button class="btn btn-primary" onclick="submitRoleChange()">Update</button>
+        </div>
+    </div>
+</dialog>
+<button class="btn btn-xs btn-outline btn-primary"
+    onclick="openChangeRoleModal(${u.userId}, '${u.role?.role}')">Role</button>
