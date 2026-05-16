@@ -1,0 +1,98 @@
+<!-- Admin — HTML
+Dashboard Card:
+
+ -->
+<div class="card bg-red-600 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">⚠️ Complaints</h2>
+        <p class="text-sm">Complaint resolution center</p>
+        <div class="card-actions justify-end mt-2">
+            <button class="btn btn-warning text-black btn-sm w-full"
+                onclick="openViewComplaintsModal()">Resolve Now</button>
+        </div>
+    </div>
+</div>
+<!-- View Modal: -->
+ <dialog id="complaint_list_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+        <h3 class="font-bold text-xl mb-4 text-error">⚠️ Complaints</h3>
+        <div class="overflow-x-auto h-[28rem] border border-base-300 rounded-xl">
+            <table class="table table-zebra table-pin-rows w-full">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>ID</th>
+                        <th>Tenant</th>
+                        <th>Issue</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="complaintTableBody"></tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>
+<!-- Tenant — HTML -->
+<!-- Dashboard Card: -->
+ <div class="card bg-red-600 text-white shadow-lg">
+    <div class="card-body p-6">
+        <h2 class="card-title text-xl">⚠️ Complaints</h2>
+        <p class="text-sm">Report an issue.</p>
+        <div class="card-actions justify-between mt-2 flex-nowrap">
+            <button class="btn btn-outline border-white text-white btn-sm flex-1 mr-1"
+                onclick="openComplaintHistoryModal()">History</button>
+            <button class="btn btn-warning text-black btn-sm flex-1 ml-1"
+                onclick="add_complaint_modal.showModal()">Report +</button>
+        </div>
+    </div>
+</div>
+<!-- Report Modal: -->
+ <dialog id="add_complaint_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-md">
+        <h3 class="font-bold text-lg mb-4 text-red-600">⚠️ Report a Complaint</h3>
+        <form id="formAddComplaint" class="space-y-4">
+            <div class="form-control">
+                <label class="label"><span class="label-text">Complaint Title</span></label>
+                <input type="text" id="c_title" class="input input-bordered"
+                    placeholder="e.g. Fan Not working" required />
+            </div>
+            <div class="form-control">
+                <label class="label"><span class="label-text">Description</span></label>
+                <textarea id="c_description" class="textarea textarea-bordered h-24"
+                    placeholder="Describe the issue in detail..." required></textarea>
+            </div>
+            <div class="modal-action mt-6">
+                <button type="button" class="btn" onclick="add_complaint_modal.close()">Cancel</button>
+                <button type="submit" class="btn btn-error text-white w-32">Submit ➔</button>
+            </div>
+        </form>
+    </div>
+</dialog>
+<!-- History Modal: -->
+ <dialog id="complaint_history_modal" class="modal">
+    <div class="modal-box w-11/12 max-w-4xl">
+        <h3 class="font-bold text-xl mb-4 border-b pb-2">📜 My Complaints</h3>
+        <div class="overflow-x-auto h-80">
+            <table class="table table-zebra table-pin-rows w-full">
+                <thead>
+                    <tr class="bg-base-200">
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="complaintHistoryTableBody">
+                    <tr><td colspan="5" class="text-center">Loading history...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-action">
+            <form method="dialog"><button class="btn">Close</button></form>
+        </div>
+    </div>
+</dialog>
